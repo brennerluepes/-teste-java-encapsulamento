@@ -1,0 +1,87 @@
+// Classe Produto
+classe pública Produto {
+    String privada nome;
+    privado duplo preco;
+    privado int quantidade;
+
+    // Construtor
+    public Produto(String nome, double preço, int quantidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    // Métodos getters e setters
+    pública String getNome() {
+        retornar nome;
+    }
+
+    público void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    público duplo getPreco() {
+        retornar preco;
+    }
+
+    público void setPreco(double preco) {
+        se (preco >= 0) {
+            this.preco = preco;
+        } outro {
+            System.out.println("O preço não pode ser negativo.");
+        }
+    }
+
+    público int getQuantidade() {
+        retornar quantidade;
+    }
+
+    público void setQuantidade(int quantidade) {
+        se (quantidade >= 0) {
+            this.quantidade = quantidade;
+        } outro {
+            System.out.println("A quantidade não pode ser negativa.");
+        }
+    }
+
+    // Método para exibir informações do produto
+    público vazio mostrarInfo() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Preço: R$" + preco);
+        System.out.println("Quantidade em estoque: " + quantidade);
+    }
+
+    // Método para vender uma quantidade específica do produto
+    public void vender(int quantidadeVendida) {
+        if (quantidadeVendida > 0 && quantidadeVendida <= quantidade) {
+            quantidade -= quantidadeVendida;
+            System.out.println("Venda realizada com sucesso.");
+        } outro {
+            System.out.println("Não há estoque suficiente para realizar esta venda.");
+        }
+    }
+}
+
+// Classe principal para testar o código
+classe pública Main {
+    público estático vazio main(String[] args) {
+        // Criando um produto
+        Produto produto1 = new Produto("Camiseta", 29.99, 50);
+
+        // Exibindo informações do produto
+        produto1.mostrarInfo();
+
+        // Venda de algumas unidades do produto
+        produto1.vender(10);
+
+        // Exibindo informações atualizadas do produto após a venda
+        produto1.mostrarInfo();
+
+        // Tentativa de definir preço e quantidade inválidos (negativos)
+        produto1.setPreco(-5.0);
+        produto1.setQuantidade(-20);
+
+        // Exibindo informações do produto após tentativas inválidas
+        produto1.mostrarInfo();
+    }
+}
